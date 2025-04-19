@@ -3,12 +3,9 @@ import styles from '@/app/page.module.css';
 import Link from 'next/link';
 import {PageProps as Pages} from '@/app/pageProps'
 
-interface PageParams{
-  params: {id : string}
-}
-
-export default function page({params}: PageParams){
-  const page = Pages.find((i)=> i.id.toString() === params.id);
+export default function page(context: any){
+  const id  = context?.params?.id;
+  const page = Pages.find((i)=> i.id.toString() === id);
   if(!page) return <h1 className={styles.heading}>Page not found</h1>;
 
   return (
