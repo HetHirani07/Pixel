@@ -3,9 +3,9 @@ import { PageProps } from '@/app/pageProps';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: any
 ) {
-  const { id } = params;
+  const id  = context?.params?.id;
 
   const page = PageProps.find((i) => i.id.toString() === id);
 
