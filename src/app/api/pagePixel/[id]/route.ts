@@ -1,8 +1,12 @@
 import { NextRequest } from 'next/server';
 import { PageProps } from '@/app/pageProps';
 
-export async function GET(req: NextRequest, context: { params: { id: string } }) {
-  const { id } = context.params;
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const { id } = params;
+
   const page = PageProps.find((i) => i.id.toString() === id);
 
   const forwardedFor = req.headers.get('x-forwarded-for');
@@ -11,7 +15,8 @@ export async function GET(req: NextRequest, context: { params: { id: string } })
   if (page) {
     console.log(`Page id: ${page.id}, name: ${page.name} by IP: ${ip}`);
   } else {
-    console.log(`Page not found by IP: ${ip}`);}
+    console.log(`Page not found for id ${id}, by IP: ${ip}`);
+  }
 
   const img = Buffer.from(
     'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
@@ -22,6 +27,7 @@ export async function GET(req: NextRequest, context: { params: { id: string } })
     headers: {
       'Content-Type': 'image/gif',
       'Content-Length': img.length.toString(),
+      'Cache-Control': 'no-cache',
     },
     status: 200,
   });
