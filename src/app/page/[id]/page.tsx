@@ -1,14 +1,14 @@
 'use client';
 import styles from '@/app/page.module.css';
 import Link from 'next/link';
-import {PageProps} from '@/app/pageProps'
+import {PageProps as Pages} from '@/app/pageProps'
 
 interface props{
   params: {id : string}
 }
 
 export default function page({params}: props){
-  const page = PageProps.find((i)=> i.id.toString() === params.id);
+  const page = Pages.find((i)=> i.id.toString() === params.id);
   if(!page) return <h1 className={styles.heading}>Page not found</h1>;
 
   return (
