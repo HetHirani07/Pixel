@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { PageProps } from '@/app/pageProps';
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Record<string, string> }) {
   const page = PageProps.find((i) => i.id.toString() === params.id);
 
   const forwardedFor = req.headers.get('x-forwarded-for');
