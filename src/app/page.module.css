@@ -1,2 +1,4 @@
 .heading{font-size: 22px; color: #333;}
-.photo{width: 200px; border: 1px solid #333; padding: 10px;}
+.btn{width: 100px; height: 20px; border: 1px solid #333; padding: 10px; background-color: #fff; display: flex; justify-content: center; align-items: center; cursor: pointer; margin: 10px;}
+.btn:hover{background-color: #f0f0f0;}
+.btnTxt{font-size: 20px; color: #333;}
